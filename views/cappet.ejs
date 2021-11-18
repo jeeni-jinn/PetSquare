@@ -37,27 +37,20 @@
       <ul class="navbar__menu">
         <li class="navbar__menu__item active" data-link="#home">HOME</li>
         <li class="navbar__menu__item active" data-link="#places">추천 플레이스</li>
-         
+        <!-- <li class="navbar__menu__item active"data-link="#searchbox">장소검색</li>  -->
         <li class="navbar__menu__item active" data-link="#map">Map</li>
         <li class="navbar__menu__item active"><a id="lia" href="/main">게시판</a></li>
-       
         <% if (is_logined!=true) { %>
           <li class="navbar__menu__item active"><a id="lia" href="/views/login">로그인</a></li> 
           
-          <% }
-         
-          else { %>
-            
-            <% } %>
+          <% } %>
+          
         <li class="navbar__menu__item active"><a id="lia" href="/views/register">회원가입</a></li>
-       
+        
         <% if (is_logined==true) { %>
            
           <li ><a href="/logout" class="logout"> logout</a></li> 
-          <% } 
-          else { %>
-            
-            <% } %>
+          <% } %>
           
       </ul>
       <!-- toggle-btn 
@@ -285,11 +278,36 @@
               // 정상적으로 검색이 완료됐으면
               // 검색 목록과 마커를 표출합니다
               displayPlaces(data);
-             
-      
-              // 페이지 번호를 표출합니다
+
+              
+              /* 추가-mark-1) 특정 검색 목록을 클릭시 해당 장소를 검색하는 페이지를 띄웁니다*/
+              console.log(data);
+              const $itemList = document.querySelectorAll('li.item');
+
+              for ( let i =0; i<$itemList.length; i++){
+                let eachList = $itemList[i];
+                    eachList.addEventListener('click', (e) => {
+                      console.log(e.currentTarget);
+                      let $classNum= `${e.currentTarget.firstChild.className}`
+                      let $classNumSub = $classNum.substring(16,17);
+                      /* console.log($classNumSub);
+                      console.log(e.currentTarget); */
+                      const dataID = data[`${$classNumSub}`-1].id;
+                      console.log(dataID);
+
+                      /* e.currentTarget = 클릭 이벤트의 target : <li class="item"></li> 요소 */
+                      const openUrls = 'https://map.kakao.com/?itemId='.concat(dataID);
+                      console.log(openUrls);
+                      window.open(String(openUrls));
+                    /*  window.open(String(openUrls));
+                      $openNewPage(dataID); */
+                    /* https://map.kakao.com/?itemId=18577297 */
+                    })
+               } 
+
+              
               displayPagination(pagination);
-      
+              
           } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
       
               alert('검색 결과가 존재하지 않습니다.');
@@ -299,14 +317,9 @@
       
               alert('검색 결과 중 오류가 발생했습니다.');
               return;
-      
           }
-      }
-      
-       
-
-      
-
+        }
+        
       // 검색 결과 목록과 마커를 표출하는 함수입니다
       function displayPlaces(places) {
       
@@ -328,10 +341,13 @@
               var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
                   marker = addMarker(placePosition, i), 
                   itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
+
+                  
       
               // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
               // LatLngBounds 객체에 좌표를 추가합니다
               bounds.extend(placePosition);
+              
               
               // 마커와 검색결과 항목에 mouseover 했을때
               // 해당 장소에 인포윈도우에 장소명을 표시합니다
@@ -356,6 +372,7 @@
       
               fragment.appendChild(itemEl);   /*mark1*/
           }
+     
       
           // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
           listEl.appendChild(fragment);
@@ -364,6 +381,7 @@
           // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
           map.setBounds(bounds);
       }
+
       
       // 검색결과 항목을 Element로 반환하는 함수입니다
       function getListItem(index, places) {
@@ -379,17 +397,18 @@
           } else {
               itemStr += '    <span>' +  places.address_name  + '</span>'; 
           }
-                       
+
             itemStr += '  <span class="tel">' + places.phone  + '</span>' +
                       '</div>';           
       
           el.innerHTML = itemStr;
           el.className = 'item';
-      
           return el;
+
       }
+
       
-     
+
       // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
       function addMarker(position, idx, title) {
           var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
