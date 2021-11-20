@@ -62,16 +62,17 @@ ul {
 	padding-left: 0;
 }
 #navbar {
+	display: flex;
 	position: fixed;
 	width: 100%;
 	left: 0px;
 	top: 0px;
 	z-index: 51;
-	display: flex;
-
 	justify-content: space-between;
+
 	padding: 10x;
-	align-items: center;
+
+	/* align-items: center; */
 	color: var(--color-white);
 	background-color: var(--color-grey);
 	transition: var(--animation-duration) ease-in-out;
@@ -89,6 +90,7 @@ ul {
 }
 .navbar__menu {
 	display: flex;
+	/* align-items: center; */
 }
 div.navbar__logo {
 	display: flex;
@@ -102,16 +104,24 @@ div.navbar__logo {
 	font-size: 67px;
 	line-height: 67px;
 }
-button.navbar__toggle-btn {
-	margin-left: 20px;
-	margin: auto;
-	width: 50px;
-	height: 60px;
-	border: 3px solid white;
+button.navbar__toggle__btn {
+	/* margin-left: 20px; mark-1 */
+	position: absolute;
+	display: none;
+	top: 0px;
+	right: 15px;
+	width: 63px;
+	height: 73px;
+	border-radius: 8px;
+	font-size: 27px;
+	color: rgb(245, 176, 73);
+	border: 5px solid rgb(236, 190, 91);
+
+	/* display: none; */
 }
 
-.logout{
-	margin:10px;
+.logout {
+	margin: 10px;
 }
 .navbar__menu__item {
 	display: flex;
@@ -143,37 +153,6 @@ div 컨테이너들이 좌우 한줄 정렬 */
 	color: var(--color-black);
 	font-size: var(--font-regular);
 }
-
-/*  장소추천 */
-/*
-#places {
-	margin: 130px 50px 50px 50px;
-}
-
-#places button {
-	border-radius: 50%;
-	font-size: 30px;
-	background-color: white;
-	border: none;
-}
-.place__container__h1 {
-	font-size: 20px;
-}
-.place__container {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	height: 320px;
-}
-.place__container div.place__picture__body {
-	flex-basis: 20%;
-	height: 300px;
-	border: 5px solid black;
-	text-align: center;
-	margin: 20px;
-	border-radius: 10px;
-}
-*/
 
 /* ---------추가코드-----------------------------------*/
 .place__container__h1 {
@@ -375,3 +354,50 @@ h1.contact__us {
 	font-size: 20px;
 	margin-top: -7px;
 }
+
+/* when below 768px screen changes to be responsive  mark-2*/
+@media screen and (max-width: 1182px) {
+	button.navbar__toggle__btn {
+		display: block;
+		height: 70px;
+		top: 26px;
+	}
+	button.navbar__toggle__btn:hover {
+		transition: var(--animation-duration) ease-in-out;
+		color: rgba(221, 86, 221, 0.904);
+		border: 5px solid rgb(223, 120, 226);
+	}
+	#navbar {
+		flex-direction: column;
+		text-align: center;
+		height: 120px;	
+		padding:0px;
+	}
+	div.navbar__logo{
+		margin-top:30px;
+	}
+	div.navbar__logo a{
+	text-align:center;
+	}
+	.navbar__menu,
+	.navbar__menu__item {
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		display: none;
+	}
+	.navbar__menu.open,
+	.navbar__menu__item {
+		display: block;	
+		padding:0px;
+	}
+	.navbar__menu__item.active{
+		margin:auto;
+	}
+	.navbar__menu.open{
+		margin:37px 0px 0px 0px;
+	
+	}
+	.navbar__menu{
+		background-color: rgb(245, 176, 73);
+	}

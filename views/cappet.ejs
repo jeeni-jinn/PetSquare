@@ -32,33 +32,33 @@
       <div class="navbar__logo">  <!--  로고박스    -->
         <img  src="/img1/pet_icon.png" alt="dog"> 
         <a href="#">Pet square</a>
-        
       </div>  
+
       <ul class="navbar__menu">
         <li class="navbar__menu__item active" data-link="#home">HOME</li>
         <li class="navbar__menu__item active" data-link="#places">추천 플레이스</li>
-        <!-- <li class="navbar__menu__item active"data-link="#searchbox">장소검색</li>  -->
         <li class="navbar__menu__item active" data-link="#map">Map</li>
         <li class="navbar__menu__item active"><a id="lia" href="/main">게시판</a></li>
         <% if (is_logined!=true) { %>
-          <li class="navbar__menu__item active"><a id="lia" href="/views/login">로그인</a></li> 
-          
-          <% } %>
-          
+        <li class="navbar__menu__item active"><a id="lia" href="/views/login">로그인</a></li>
+        <% } %>
         <li class="navbar__menu__item active"><a id="lia" href="/views/register">회원가입</a></li>
-        
-        <% if (is_logined==true) { %>
-           
+        <% if (is_logined==true) { %>  
           <li ><a href="/logout" class="logout"> logout</a></li> 
-          <% } %>
-          
+        <% } %>
+      
+        
       </ul>
-      <!-- toggle-btn 
-    <button class="navbar__toggle__btn">
-        <i class="fas fa-bars"></i>
-      </button>     
-    -->
+        <!-- toggle-btn  -->
+        <button class="navbar__toggle__btn">
+          <i class="fas fa-bars"></i>
+        </button>    
     </nav> 
+
+
+
+
+
     <!-- HOME SECTION --> 
     <section id="home">
       <img src="/img1/dog_1.png" alt="bg dog" >
@@ -110,7 +110,7 @@
       </div>
     </div>
 
-
+ 
     <!-- 장소검색 -->
     <!-- <hr>
     <section id="searchbox">
@@ -487,101 +487,6 @@
 
       </script>
     
-      <!-- Map -->
-      <!--
-  <section>
-        <h1 class="map__title">KAKAO MAP</h1>
-       
-       <div id="map" style="width: 500px;
-        height: 500px;
-        border: 5px solid black;
-        margin: 25px 0 50px 0;
-        border-radius: 5px; "></div>
-  <p style="margin-top:-12px">
-    <b>Chrome 브라우저는 https 환경에서만 geolocation을 지원합니다.</b> 참고해주세요.
-  </p>
-  
-  
-  <script type="text/javascript" src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=8304a7b64c41f72775da51ec6a396419"></script>
-  <script>
-  var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 5 // 지도의 확대 레벨 
-    }; 
-  
-  var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-  
-  // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
-  if (navigator.geolocation) {
-    
-    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-    navigator.geolocation.getCurrentPosition(function(position) {
-        
-        var lat = position.coords.latitude, // 위도
-            lon = position.coords.longitude; // 경도
-        
-        var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-            message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
-        
-        // 마커와 인포윈도우를 표시합니다
-        displayMarker(locPosition, message);
-            
-      });
-    
-  } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-    
-    var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),    
-        message = 'geolocation을 사용할수 없어요..'
-        
-    displayMarker(locPosition, message);
-  }
-  
-  // 지도에 마커와 인포윈도우를 표시하는 함수입니다
-  function displayMarker(locPosition, message) {
-  
-    // 마커를 생성합니다
-    var marker = new kakao.maps.Marker({  
-        map: map, 
-        position: locPosition
-    }); 
-    
-    var iwContent = message, // 인포윈도우에 표시할 내용
-        iwRemoveable = true;
-  
-    // 인포윈도우를 생성합니다
-    var infowindow = new kakao.maps.InfoWindow({
-        content : iwContent,
-        removable : iwRemoveable
-    });
-    
-    // 인포윈도우를 마커위에 표시합니다 
-    infowindow.open(map, marker);
-    
-    // 지도 중심좌표를 접속위치로 변경합니다
-    map.setCenter(locPosition);      
-  } 
-
-
-  </script>
-     
-      </section>
--->
-<!--
-div id="map" style="width:500px;height:400px;"></div>
-	
-  
-  
-  <script>
-		var container = document.getElementById('map');
-		var options = {
-			center: new kakao.maps.LatLng(33.450701, 126.570667),
-			level: 3
-		};
-
-		var map = new kakao.maps.Map(container, options);
-	</script>
--->
     <section id="contact">
       <div>
         <h1 class="contact__title"> [2nd semester Capstone_design project] </h1>
@@ -596,12 +501,6 @@ div id="map" style="width:500px;height:400px;"></div>
         <p class="contact__rights">2nd semester Capstone_design project ( 김은진,20110196심현준 )    @ All rights reserved</p>
       </div>
     </section>
-
-
   </body>
-
-    
-
-  
 </html>     
 

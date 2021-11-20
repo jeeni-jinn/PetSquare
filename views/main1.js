@@ -81,8 +81,11 @@ next.addEventListener('click', function(){
   if(currentIdx !== slideCount - 1) moveSlide(currentIdx + 1);
 })
 
-
-
+/* click toggleBtn => open menu item */ 
+const navbarToggleBtn = document.querySelector('.navbar__toggle__btn')
+navbarToggleBtn.addEventListener('click', () => {
+  navbarMenu.classList.toggle('open');
+  });
 
 
 
