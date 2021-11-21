@@ -93,8 +93,9 @@ app.get('/', (req,res)=>{    //"/"에 get요청이 왔을 때
         client.query('select max(id) from a_post;', function (err, result, fields){
             Object.keys(result).forEach(function(key){
                 var row = result[key];
+                console.log(row)
             })
-            console.log(row)
+            
             if(result){
                 global.number = result[0] +1;
             }
