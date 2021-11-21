@@ -147,7 +147,7 @@ router.get("/pasing/:cur", function (req, res) {
           
           client.query('select * from a_post where id= ?', [req.params.id], (err,data)=>{
             if(globalId == data[0].user){
-              client.query('delete from a_post where id=?', [req.params.id]
+              PetSquare.query('delete from a_post where id=?', [req.params.id]
               
             )
             res.redirect('/main')}
@@ -162,7 +162,7 @@ router.get("/pasing/:cur", function (req, res) {
         console.log("수정 진행")
     
         fs.readFile('edit.ejs', 'utf-8', function (error, data) {
-        client.query('select * from a_post where id = ?', [req.params.id], function(err, result){
+          client.query('select * from a_post where id = ?', [req.params.id], function(err, result){
           if(globalId == result[0].user){
             res.send(ejs.render(data,{
               data : result[0]

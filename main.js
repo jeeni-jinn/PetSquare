@@ -88,13 +88,13 @@ app.use(boardRouter)
 app.get('/', (req,res)=>{    //"/"에 get요청이 왔을 때
     console.log('메인페이지 작동');
     console.log(req.session);
-    
+    var querystring = 'select count(*) as max from a_post'
     if(req.session.is_logined == true){
-        var queryString = 'select count(*) as max from a_post'
-    
-    
-    getConnection().query(queryString, function (error2, data) {
-            console.log(data[0]);
+        
+        client.query(querystring, function (error2, data) {
+            console.log(data[0].max);
+            
+
             if(result){
                 global.number = data[0];
             }
