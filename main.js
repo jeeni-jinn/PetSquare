@@ -90,12 +90,8 @@ app.get('/', (req,res)=>{    //"/"에 get요청이 왔을 때
     console.log(req.session);
     
     if(req.session.is_logined == true){
-        client.query('select max(id) from a_post;', function (err, result, fields){
-            Object.keys(result).forEach(function(key){
-                var row = result[key];
-                console.log(row.max(id))
-            })
-            
+        client.query('select max(id) as maxid from a_post;', function (err, result, fields){
+            console.log(maxid)
             if(result){
                 global.number = result[0] +1;
             }
