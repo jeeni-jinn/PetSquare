@@ -37,19 +37,19 @@
 <% data.forEach(function (item,index){ %>
 <tr>
 <td>
-<%= item.user %>
+<%= item.id %>
 </td>
 <td>
-<a href='/detail/<%= item.user%>'><%= item.title %></a>
+<a href='/detail/<%= item.id%>'><%= item.title %></a>
 </td>
 <td>
     <%= item.user %>
     </td>
 <td>
-<a href="/delete/<%= item.user%>">삭제</a>
+<a href="/delete/<%= item.id%>">삭제</a>
 </td>
 <td>
-<a href="/edit/<%= item.user%>">수정</a>
+<a href="/edit/<%= item.id%>">수정</a>
 </td>
 </tr>
 <% })%>

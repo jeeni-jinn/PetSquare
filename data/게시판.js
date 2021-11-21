@@ -79,7 +79,7 @@ router.get("/pasing/:cur", function (req, res) {
                 return
                 }
         
-                var queryString = 'select user,title,contents,user from a_post order by id desc limit ?,?'; //limit 가 뭐지?
+                var queryString = 'select id,title,contents,user from a_post order by id desc limit ?,?'; //limit 가 뭐지?
                 getConnection().query(queryString, [no, page_size], function (error, result) {
                   
                 if (error) {
