@@ -5,6 +5,10 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const session = require('express-session');
 const crypto = require('crypto');
+
+var AWS = require('aws-sdk');
+AWS.config.region = 'ap-northeast-2';
+var ec2  = new AWS.EC2();
 const FileStore = require('session-file-store')(session); // 세션을 파일에 저장
 const cookieParser = require('cookie-parser');
 const html = require('html')
@@ -13,10 +17,13 @@ var sanitizeHtml = require('sanitize-html');
 global.globalId = {};
 global.number = {};
 
-
 // express 설정 1
 const app = express();
-
+app.get('/ec2', function(req, res){
+        ec2.describeInstances({}, function(err, data) {
+                res.json(data);
+        });
+});
 
 
 app.get('/page', function(req, res) { 
