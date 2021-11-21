@@ -91,8 +91,8 @@ app.get('/', (req,res)=>{    //"/"에 get요청이 왔을 때
     var querystring = 'select count(*) as max from a_post'
     if(req.session.is_logined == true){
         
-        client.query(querystring, function (error2, data) {
-            console.log(data[0].max);
+        client.query(querystring, function (error2, result) {
+            console.log(result[0].max);
             
 
             if(result){
