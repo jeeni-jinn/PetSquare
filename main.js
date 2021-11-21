@@ -90,8 +90,8 @@ app.get('/', (req,res)=>{    //"/"에 get요청이 왔을 때
     console.log(req.session);
     
     if(req.session.is_logined == true){
-        client.query('select max(id) as maxid from a_post;', function (err, result, fields){
-            console.log(maxid)
+        client.query('select count(*) as max from a_post', function (err, result, fields){
+            console.log(result);
             if(result){
                 global.number = result[0] +1;
             }
