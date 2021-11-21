@@ -93,10 +93,10 @@ app.get('/', (req,res)=>{    //"/"에 get요청이 왔을 때
         client.query('select max(id) from a_post;', function (err, result, fields){
             console.log((result[0]))
             if(result){
-                number = result +1;
+                global.number = result[0] +1;
             }
             else{
-                number = 1
+                global.number = 1
             }
         
         res.render("cappet", {is_logined : req.session.is_logined, 
