@@ -34,9 +34,10 @@ app.get('/page', function(req, res) {
 
 // db 연결 2
 const client = mysql.createConnection({
-    user : 'root',
-    password : 'jinjin',
-    database : 'client' //client 는 스키마 이름(데베 이름)
+    host : 'petsquare.csqajgdufqki.ap-northeast-2.rds.amazonaws.com',
+    user : 'admin',
+    password : 'jinjinjin',
+    database : 'PetSquare' //client 는 스키마 이름(데베 이름)
 });
 
 // 정적 파일 설정 (미들웨어) 3
