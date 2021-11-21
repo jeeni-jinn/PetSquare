@@ -34,7 +34,8 @@ app.get('/page', function(req, res) {
 
 // db 연결 2
 const client = mysql.createConnection({
-    
+    host : 'petsquare.csqajgdufqki.ap-northeast-2.rds.amazonaws.com',
+password : 'jinjinjin',
     user : 'admin',
     
     database : 'PetSquare' //client 는 스키마 이름(데베 이름)
