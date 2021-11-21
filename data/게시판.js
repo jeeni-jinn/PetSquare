@@ -7,9 +7,9 @@ var bodyParser = require('body-parser');
 var async = require('async');
 
 const client = mysql.createConnection({
-  host : 'petsquare.csqajgdufqki.ap-northeast-2.rds.amazonaws.com',
+  
   user : 'admin',
-  password : 'jinjinjin',
+  
   database : 'PetSquare' //client 는 스키마 이름(데베 이름)
 });
 router.use(bodyParser.urlencoded({ extended: false }))
@@ -303,10 +303,10 @@ router.get("/pasing/:cur", function (req, res) {
 */
         var pool = mysql.createPool({
             connectionLimit: 10,
-            host: 'petsquare.csqajgdufqki.ap-northeast-2.rds.amazonaws.com',
+            
             user: 'admin',
             database: 'PetSquare',
-            password: 'jinjinjin'
+            
             })
             
             
