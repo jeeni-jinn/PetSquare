@@ -94,7 +94,7 @@ app.get('/', (req,res)=>{    //"/"에 get요청이 왔을 때
         client.query('select count(*) as max from a_post', function (error2, result) {
             console.log(result[0].max);
             
-
+                
             if(result){
                 global.number = result[0].max +1;
             }
