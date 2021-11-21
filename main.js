@@ -90,10 +90,13 @@ app.get('/', (req,res)=>{    //"/"에 get요청이 왔을 때
     console.log(req.session);
     
     if(req.session.is_logined == true){
-        client.query('select count(*) as max from a_post', function (err, result, fields){
-            console.log(result);
+        var queryString = 'select count(*) as max from a_post'
+    
+    
+    getConnection().query(queryString, function (error2, data) {
+            console.log(data[0]);
             if(result){
-                global.number = result[0] +1;
+                global.number = data[0];
             }
             else{
                 global.number = 1
