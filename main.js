@@ -88,10 +88,10 @@ app.use(boardRouter)
 app.get('/', (req,res)=>{    //"/"에 get요청이 왔을 때
     console.log('메인페이지 작동');
     console.log(req.session);
-    var querystring = 'select count(*) as max from a_post'
+    
     if(req.session.is_logined == true){
         
-        client.query(querystring, function (error2, result) {
+        client.query('select count(*) as max from a_post', function (error2, result) {
             console.log(result[0].max);
             
 
