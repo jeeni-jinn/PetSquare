@@ -91,9 +91,9 @@ app.get('/', (req,res)=>{    //"/"에 get요청이 왔을 때
     
     if(req.session.is_logined == true){
         client.query('select max(id) from a_post;', function (err, result, fields){
-            console.log(result);
+            
             if(result){
-                number = parseInt(result[0])+1;
+                number = result[0]+1;
             }
             else{
                 number = 1;
