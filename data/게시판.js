@@ -147,7 +147,7 @@ router.get("/pasing/:cur", function (req, res) {
           
           client.query('select * from a_post where id= ?', [req.params.id], (err,data)=>{
             if(globalId == data[0].user){
-              PetSquare.query('delete from a_post where id=?', [req.params.id]
+              client.query('delete from a_post where id=?', [req.params.id]
               
             )
             res.redirect('/main')}
