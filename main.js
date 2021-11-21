@@ -91,12 +91,10 @@ app.get('/', (req,res)=>{    //"/"에 get요청이 왔을 때
     
     if(req.session.is_logined == true){
         client.query('select max(id) from a_post;', function (err, result, fields){
-            var datalist =[];
-            for (var data of result){
-                datalist.push(data.max(id));
-            }
-        console.log(datalist)
-            
+            Object.keys(result).forEach(function(key){
+                var row = result[key];
+            })
+            console.log(row)
             if(result){
                 global.number = result[0] +1;
             }
@@ -109,11 +107,12 @@ app.get('/', (req,res)=>{    //"/"에 get요청이 왔을 때
          //is_logined : req.session.is_logined,
            // name : req.session.name
        //});//
-        })
-    }else{
+        
+    })}else{
         res.render("cappet", {is_logined : false})//,{//
             //is_logined : false//
         //});//
+    
     
 
 }})
