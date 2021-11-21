@@ -91,9 +91,12 @@ app.get('/', (req,res)=>{    //"/"에 get요청이 왔을 때
     
     if(req.session.is_logined == true){
         client.query('select max(id) from a_post;', function (err, result, fields){
+            var datalist =[];
+            for (var data of result){
+                datalist.push(data.max(id));
+            }
+        console.log(datalist)
             
-            var array = result[0];
-            console.log((array))
             if(result){
                 global.number = result[0] +1;
             }
