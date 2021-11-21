@@ -96,7 +96,7 @@ app.get('/', (req,res)=>{    //"/"에 get요청이 왔을 때
             
 
             if(result){
-                global.number = data[0];
+                global.number = result[0];
             }
             else{
                 global.number = 1
