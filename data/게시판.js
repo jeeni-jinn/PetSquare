@@ -119,14 +119,17 @@ router.get("/pasing/:cur", function (req, res) {
         console.log("삽입 페이지 나와라")
         
         fs.readFile('insert.ejs', 'utf-8', function (error, data) {
-           
+          client.query('select max(id) as max from a_post', function(err, result){
+            if (result[0].max == number){
+              number = number +1;
+            }
         res.send((ejs.render(data,{
           user : req.session.id
         })))
         })}
         
     
-        )
+        )})
         //삽입 포스터 데이터
         router.post("/insert",  function (req, res) {
         console.log("삽입 포스트 데이터 진행")
