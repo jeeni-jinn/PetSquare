@@ -162,8 +162,8 @@ app.post('/views/register',(req,res)=>{
             res.redirect('login');
         }else{
             console.log('회원가입 실패');
+            res.write("<script>alert('ID already exists'); location=\"./views/login\"</script>");
             
-            res.redirect('login');
         }
     });
 });
