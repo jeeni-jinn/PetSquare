@@ -123,6 +123,10 @@ router.get("/pasing/:cur", function (req, res) {
             if (result[0].max == number){
               number = number +1;
             }
+            else if(result[0].max < number){
+              number = result[0].max + 1
+            }
+            
         res.send((ejs.render(data,{
           user : req.session.id
         })))
